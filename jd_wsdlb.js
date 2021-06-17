@@ -1,7 +1,9 @@
 /*
+
 [task_local]
-#大老板农场
-5 6-18/6 * * * 大老板农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+入口 极速版 赚金币 种水果
+#柠檬我是大老板农场
+5 0-23/6 * * * http://nm66.top/jd_wsdlb.js, tag=柠檬我是大老板农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 */
 
 
@@ -81,8 +83,12 @@ if ($.info.data.firstJoinFlag === true) {
     
         console.log(`\n当前种植水果：${$.info.data.plantInfo[0].cropName}\n当前阶段: ${$.info.data.plantInfo[0].nowStep}\n当前下一阶段还需要浇水：${$.info.data.plantInfo[0].upgradeWateringNum}次`)
        await help($.info.data.encPin)
-        
+        //\n当前进度：${$.watering.data.speedFarmPlantInfo.cropRate}%
         allMessage += `京东账号${$.index}-${$.nickName || $.UserName}\n当前种植水果：${$.info.data.plantInfo[0].cropName}\n当前阶段: ${$.info.data.plantInfo[0].nowStep}\n当前下一阶段还需要浇水：${$.info.data.plantInfo[0].upgradeWateringNum}次${$.index !== cookiesArr.length ? '\n\n' : '\n\n'}`;
+                if (getwat.code === 0 ){
+        $.log(`\n领取定时水滴：${getwat.data.collectWaterNumber}`)
+        
+        }
         
         if ($.do.code === 0){       
  let taskList = $.do.data
@@ -100,29 +106,33 @@ if ($.info.data.firstJoinFlag === true) {
      }
      }
  }
-//if ($.info.data.ownWater * 0.1 > 1 ){
-    for (let i = 0 ; i < 3; i++){
-        await $.wait(5000)
+
      await jiaoshui($.info.data.earthInfo[0].nowPlantId)
+    
+     if (watering.success === true ){
+          $.log(parseInt(watering.data.property * 0.1))
+       cs = parseInt(watering.data.property * 0.1)
+     if (cs > 0 ){
+    for (let i = 0 ; i < cs; i++){
+        await $.wait(3000)
+        await jiaoshui($.info.data.earthInfo[0].nowPlantId)
     if (watering.code === 20004 ){
         $.log(`\n浇水水滴不足，快去做任务吧`)
           //break 
         }
 
         if (watering.code === 0 ){
-        $.log(`\n${watering.data.speedFarmPlantInfo.cropName}:\n还需水滴：${watering.data.speedFarmPlantInfo.nowStepNeedWater}`)
+        $.log(`\n${watering.data.speedFarmPlantInfo.cropName}:\n还需水滴：${watering.data.speedFarmPlantInfo.nowStepNeedWater}\n还需浇水：${watering.data.speedFarmPlantInfo.upgradeWateringNum}`)
         
         }
 
 }
     
-//}           
+}  
+}
 
 
-        if (getwat.code === 0 ){
-        $.log(`\n领取定时水滴：${getwat.data.collectWaterNumber}`)
-        
-        }
+
      
 }
 
@@ -282,7 +292,7 @@ function help(userpin) {
     return new Promise(async (resolve) => {
 
                 let options = {
-    url: `https://thebigboss.jd.com/?id=fzf6tK4xMfE2ICK4-T_iUw&enter=share&userpin=QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA&task=92&ad_od=share&utm_source=androidapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=Wxfriends`,
+    url: `https://thebigboss.jd.com/?id=fzf6tK4xMfE2ICK4-T_iUw&enter=share&userpin=${userpin}&task=92&ad_od=share&utm_source=androidapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=Wxfriends`,
 
 headers: {
 "Origin": "https://thebigboss.jd.com",

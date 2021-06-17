@@ -92,13 +92,13 @@ let joyToken = ''
   if (pKHelpAuthorFlag && new Date().getHours() >= 9) {
     let res = [], res2 = [], res3 = [];
     try {
-      res = await getAuthorShareCode('https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_zoo.json');
+      res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
     }catch (e) {
       res = []
     }
     if(!res){res = [];}
-    res2 = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_zoo.json');
-    res3 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
+    res2 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
+    res3 = await getAuthorShareCode('http://cdn.trueorfalse.top/e528ffae31d5407aac83b8c37a4c86bc/');
     if(res2.length > 3){
       res2 = getRandomArrayElements(res2,3);
     }
